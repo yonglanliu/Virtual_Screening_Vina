@@ -21,4 +21,6 @@
 <p><b>Note: Make sure you've already install rdkit package: <code>pip install rdkit</b></code></p>
 
 <h3>Convert smiles to 3D SDF file</h3>
+<p>Run code:
+<code>python utils/zinc_sdf_prepare.py &ltinput_zinc_file&gt -o &ltoutput_sdf_file&gt</code></p>
 
