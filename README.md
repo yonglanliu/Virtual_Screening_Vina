@@ -5,3 +5,14 @@
 <p><code>wget https://files.docking.org/zinc20-ML/ZINC20-ML_smiles.tar.gz</code></p>
 <p><code>tar -xvzf ZINC20-ML_smiles.tar.gz
 </code></p>
+<h3>Processing the zinc20 database</h3>
+<ol>
+  <li>remove duplicates</li>
+  <li>check validity of SMILES strings</li>
+  <li>check druglikeness of SMILES strings:
+      <ul>
+        <li>Lipinski’s rule of 5 </li>
+        <li>Quantitative Estimate of Druglikeness (QED score) with a cutoff of 0.5</li>
+      </ul>
+  </li>
+</ol>
