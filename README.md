@@ -16,3 +16,5 @@
       </ul>
   </li>
 </ol>
+<p>Run script:
+<code>python zinc_clean.py -i &ltinput_zinc_file&gt -o &ltoutput_zinc_file&gt</code></p>
