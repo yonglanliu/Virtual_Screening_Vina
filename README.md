@@ -18,3 +18,4 @@
 </ol>
 <p>Run script:
 <code>python utils/zinc_clean.py -i &ltinput_zinc_file&gt -o &ltoutput_zinc_file&gt</code></p>
+<p><b>Note: Make sure you already install rdkit package: pip install rdkit</b></p>
