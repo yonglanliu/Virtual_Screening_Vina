@@ -75,9 +75,6 @@ def prepare_zinc(file_path: str) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    #file_path = "/data/liuy48/datasets/zinc/library_prepared/smiles_all_00.txt"
-    #df_final = prepare_zinc(file_path)
-    #df_final.to_csv("zinc_druglike.csv", index=False)
     
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_zinc_file", "-i", type=str, required=True, help="Path to ZINC file")
