@@ -9,7 +9,7 @@
 <ol>
   <li>remove duplicates</li>
   <li>check validity of SMILES strings</li>
-  <li>check druglikeness of SMILES strings:
+  <li>check druglikeness of SMILES strings based on these two following criteria:
       <ul>
         <li>Lipinski’s rule of 5 </li>
         <li>Quantitative Estimate of Druglikeness (QED score) with a cutoff of 0.5</li>
