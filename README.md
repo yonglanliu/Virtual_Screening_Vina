@@ -4,7 +4,7 @@
 <h3>Download zinc20</h3>
 <p><code>wget https://files.docking.org/zinc20-ML/ZINC20-ML_smiles.tar.gz</code></p>
 <p><code>tar -xvzf ZINC20-ML_smiles.tar.gz</code></p>
-<p>This is too large and don't recommend downloading this one. Alternatively, you can go to <a ref="https://zinc20.docking.org/tranches/home/">https://zinc20.docking.org/tranches/home/</a> to download the different formats of the dataset. You also can first filter out some molecules, such as those which are not drug-like molecules. This depends on your needs.</p>
+<p>This is too large and don't recommend downloading this one. Alternatively, you can go to <a href="https://zinc20.docking.org/tranches/home/">https://zinc20.docking.org/tranches/home/</a> to download the different formats of the dataset. You also can first filter out some molecules, such as those which are not drug-like molecules. This depends on your needs.</p>
 <h3>Processing the zinc20 database</h3>
 <ol>
   <li>remove duplicates</li>
