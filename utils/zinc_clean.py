@@ -18,19 +18,14 @@ import argparse
 
 # Function to read ZINC database
 def load_zinc_file(file_path: str) -> pd.DataFrame:
-    """
-    Download ZINC database from https://files.docking.org/zinc20-ML/
-    code: wget https://files.docking.org/zinc20-ML/ZINC20-ML_smiles.tar.gz
-    extract: tar -xvzf ZINC20-ML_smiles.tar.gz
-    """
-    df = pd.read_csv(file_path, sep=" ", header=None, names=["SMILES", "ZINC_ID"]) 
+    df = pd.read_csv(file_path, sep=" ") 
     # test, load 100 molecules
-    # df = pd.read_csv(file_path, sep=" ", header=None, names=["SMILES", "ZINC_ID"], nrows=100)
+    # df = pd.read_csv(file_path, sep=" ", header=None, names=["smiles", "zinc_id"], nrows=100) # if using ZINC20-ML_smiles.tar.gz
     return df
 
 # Function to delte replicates
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    return df.drop_duplicates(subset='SMILES', keep='first')
+    return df.drop_duplicates(subset='smiles', keep='first').dropna()
 
 # Funtion to check validity of SMILES
 def check_validity(smiles: str) -> bool:
@@ -67,15 +62,14 @@ def determine_druglikeness(smiles: str) -> bool:
 def prepare_zinc(file_path: str) -> pd.DataFrame:
     df = load_zinc_file(file_path)
     df = remove_duplicates(df)
-    df["validity"] = df["SMILES"].apply(check_validity)
+    df["validity"] = df["smiles"].apply(check_validity)
     df_valid = df[df["validity"] == True]
-    df_valid["druglikeness"] = df_valid["SMILES"].apply(determine_druglikeness)
+    df_valid["druglikeness"] = df_valid["smiles"].apply(determine_druglikeness)
     df_final = df_valid[df_valid["druglikeness"] == True]
     return df_final.drop(columns=["validity", "druglikeness"])
 
 
 if __name__ == "__main__":
-    
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_zinc_file", "-i", type=str, required=True, help="Path to ZINC file")
     parser.add_argument("--output_zinc_file", '-o', type=str, required=True, help="Path to output ZINC file")
