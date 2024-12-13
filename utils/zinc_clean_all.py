@@ -28,13 +28,17 @@ class LoggerWriter:
 
 if __name__ == "__main__":
     sys.stdout = LoggerWriter(logging.getLogger())
-    pattern = os.path.join("./zinc_drug_like/*/*", '*.smi')
+    pattern = os.path.join("/zinc_drug_like/*/*", '*.smi')
     smi_files = glob.glob(pattern, recursive=True)
     print(f"Number of files: {len(smi_files)}")
 
     # Filter out empty files and files with "clean" in the name
     filtered_smi_files = [f for f in smi_files if os.path.getsize(f) > 0 and "clean" not in os.path.basename(f)] 
-    print(f"Number of non-empty files: {len(filtered_smi_files)}")
+
+    # Filter out files which have been processed
+    filtered_smi_files = [f for f in filtered_smi_files if not os.path.isfile(f.replace(".smi", "_clean.smi"))]
+    print(f"Number of files to process: {len(filtered_smi_files)}")
+
     del smi_files
 
     for f in tqdm(filtered_smi_files, desc="Processing files", unit="file"):
